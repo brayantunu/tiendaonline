@@ -1,7 +1,7 @@
 <template>
 <navbar/>
 <headnav/>
-<!-- <carruselV/> -->
+<carruselV/>
 
 </template>
 
@@ -9,13 +9,13 @@
 
 import navbar from '../components/NavBar.vue'
 import headnav from '../components/HeadNav.vue'
-// import carruselV from '../components/Carruserl.vue'
+import carruselV from '../components/Carruserl.vue'
 export default {
   name: 'HomeView',
   components: {
     navbar,
     headnav,
-    // carruselV,
+    carruselV,
   },
   
 }
