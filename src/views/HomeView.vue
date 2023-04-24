@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<navbar/>
+<headnav/>
+<!-- <carruselV/> -->
+
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
+import navbar from '../components/NavBar.vue'
+import headnav from '../components/HeadNav.vue'
+// import carruselV from '../components/Carruserl.vue'
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
-  }
+    navbar,
+    headnav,
+    // carruselV,
+  },
+  
 }
 </script>

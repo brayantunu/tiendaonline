@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.con-select-search{
+    width: 50%;
+    margin: auto;
+}
+.form-control{
+    display: flex;
+    width: 100%;
+}
+.input{
+    border:bg-info ;
+}
+/* *{
+    border: 1px solid red;
+} */
+.mynav{
+    display: flex;
+      width: 100%;
+}
+.nav-izquierdo{
+    margin: auto;
+}
+.nav-derecho{
+    margin: auto;
+}
+.navbar-center{
+    width: 100%;
+}
+.perfil{
+    /* padding-right: 80px; */
+    margin: auto;
+}
