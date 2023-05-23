@@ -1,55 +1,67 @@
 <template>
-  <Carousel v-bind="settings" :breakpoints="breakpoints">
-    <Slide v-for="slide in 10" :key="slide">
-  <img src="https://imgmedia.larepublica.pe/1200x660/larepublica/original/2021/03/30/6063a0a9243fbf33fe550c2d.jpg" alt="Image Placeholder" />
-</Slide>
-
-
-    <template #addons>
-      <Navigation />
-    </template>
-  </Carousel>
+  <div class="carousel">
+    <div class="slider" :style="{ transform: `translateX(${translateValue}px)` }">
+      <div class="slide" v-for="(image, index) in images" :key="index">
+        <img :src="image" alt="Slide Image" />
+      </div>
+    </div>
+  </div>
 </template>
 
+
 <script>
-import { defineComponent } from 'vue'
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
-
-import 'vue3-carousel/dist/carousel.css'
-
-export default defineComponent({
-  name: 'carruselV',
-  components: {
-    Carousel,
-    Slide,
-    Navigation,
+export default {
+  name: "CarouselV",
+  data() {
+    return {
+      images: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLie38q5YkI-zvvDjK5ba8Le5QWTWJaukqDRxd9x2b&s',
+        'image2.jpg',
+        'image3.jpg',
+        // Agrega aquí más imágenes si lo deseas
+      ],
+      translateValue: 0,
+      currentIndex: 0,
+      intervalId: null,
+    };
   },
-  data: () => ({
-    // carousel settings
-    settings: {
-      itemsToShow: 1,
-      snapAlign: 'center',
+  mounted() {
+    this.startCarousel();
+  },
+  beforeUnmount() {
+    this.stopCarousel();
+  },
+  methods: {
+    startCarousel() {
+      this.intervalId = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.translateValue = -this.currentIndex * 100;
+      }, 3000);
     },
-    // breakpoints are mobile first
-    // any settings not specified will fallback to the carousel settings
-    breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 3.5,
-        snapAlign: 'center',
-      },
-      // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
+    stopCarousel() {
+      clearInterval(this.intervalId);
     },
-  }),
-})
+  },
+};
 </script>
+
 <style>
-.carousel__item img {
-  max-width: 100%;
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s;
+}
+
+.slide {
+  flex: 0 0 100%;
+}
+
+.slide img {
+  width: 100%;
   height: auto;
 }
 </style>
